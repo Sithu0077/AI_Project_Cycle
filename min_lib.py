@@ -58,7 +58,7 @@ def percentile(data,p):
   #calculate index
     index = (p/100) * (n-1)
 
-    lower = len(index)
+    lower = int(index)
     upper = lower + 1
 
     if index == lower:
@@ -66,6 +66,13 @@ def percentile(data,p):
     
     fraction = index - lower
     return data[lower] + fraction * (data[upper] - data[lower])
+
+def quartiles(data):
+    Q1 = percentile(data, 25)
+    Q2 = percentile(data, 50)
+    Q3 = percentile(data, 75)
+    
+    return Q1, Q2, Q3
 
 
 data = [10, 12, 14, 16, 18]
@@ -82,4 +89,10 @@ print("Vector Add:", vec_add(v1, v2))
 print("Vector Subtract:", vec_sub(v1, v2))
 print("Scalar Multiply:", Scalar_multiplication(3, v1))
 print("Z-Scores:", z_scores(data))
+print("25th Percentile:", percentile(data, 25))
+print("50th Percentile:", percentile(data, 50))
+print("75th Percentile:", percentile(data, 75))
+
+Q1, Q2, Q3 = quartiles(data)
+print("Quartiles:", Q1, Q2, Q3)
 
