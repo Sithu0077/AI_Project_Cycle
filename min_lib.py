@@ -51,6 +51,21 @@ def z_scores(data):
     sigma = std_dev(data)
     return [(x - mu) / sigma for x in data]   #To find the z_score of the given data
 
+def percentile(data,p):
+    data = sorted(data)
+    n = len(data)
+
+  #calculate index
+    index = (p/100) * (n-1)
+
+    lower = len(index)
+    upper = lower + 1
+
+    if index == lower:
+        return data[lower]
+    
+    fraction = index - lower
+    return data[lower] + fraction * (data[upper] - data[lower])
 
 
 data = [10, 12, 14, 16, 18]
@@ -67,10 +82,4 @@ print("Vector Add:", vec_add(v1, v2))
 print("Vector Subtract:", vec_sub(v1, v2))
 print("Scalar Multiply:", Scalar_multiplication(3, v1))
 print("Z-Scores:", z_scores(data))
-
-
-
-
-           
-
 
