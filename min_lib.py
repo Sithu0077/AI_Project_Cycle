@@ -74,6 +74,10 @@ def quartiles(data):
     
     return Q1, Q2, Q3
 
+def iqr(data):
+    Q1, Q2, Q3 = quartiles(data)
+    return Q3 - Q1
+
 
 data = [10, 12, 14, 16, 18]
 v1 = [1, 2, 3]
