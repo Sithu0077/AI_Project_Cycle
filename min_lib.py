@@ -1,7 +1,14 @@
 import math
 
+def validate_data(data):
+    if not data:
+        raise ValueError("Data cannot be empty")
+
+
 def mean(data):
+    validate_data(data)
     return sum(data)/len(data)  #To find the mean of the given data
+
 
 
 def Variance(data):
@@ -77,6 +84,16 @@ def quartiles(data):
 def iqr(data):
     Q1, Q2, Q3 = quartiles(data)
     return Q3 - Q1
+
+
+def min_max_normalization(data):
+    validate_data(data)
+    min_val = minimum(data)
+    max_val = maximum(data)
+
+    if max_val == min_val:
+        return [0 for _ in data]
+    return [(x-min_val)/(max_val-min_val) for x in data]
 
 
 data = [10, 12, 14, 16, 18]
